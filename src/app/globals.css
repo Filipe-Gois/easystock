@@ -132,3 +132,15 @@ body {
 .animate-slide-in-left {
   animation: slideInFromLeft 1s ease-out forwards;
 }
+
+/* Alterando a cor do texto e fundo ao selecionar */
+::selection {
+  color: var(--primary); /* Cor de fundo */
+  background-color: #86efac; /* Cor do texto */
+}
+
+/* Para navegadores compatíveis com Firefox */
+::-moz-selection {
+  background-color: #86efac;
+  color: var(--primary);
+}

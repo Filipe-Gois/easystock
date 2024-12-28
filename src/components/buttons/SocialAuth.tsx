@@ -1,3 +1,5 @@
+"use client"
+import { createClient } from "@/utils/supabase/client";
 import { FaGithub } from "react-icons/fa";
 
 type SocialAuthProps = {
@@ -7,8 +9,16 @@ type SocialAuthProps = {
 
 const SocialAuth = ({ auth = "google" }: SocialAuthProps) => {
 
+    const supabase = createClient();
+
+    const socialSigin = () => {
+        supabase.auth.signInWithOAuth({
+            provider: auth,
+        });
+    }
+
     return (
-        <button className="min-w-48  transition-all duration-300 ease-in-out hover:scale-110 flex justify-center items-center gap-4 bg-white border-2 rounded py-2 px-6">
+        <button onClick={socialSigin} className="min-w-48 transition-all duration-300 ease-in-out hover:scale-110 flex justify-center items-center gap-4 bg-white border-2 rounded py-2 px-6">
             {auth !== "google" ? <>
                 <FaGithub size={22} className="text-black" />Github</> : <>
                 <GoogleIconComponent />
