@@ -10,10 +10,9 @@ const AuthForm = () => {
     const pathname = usePathname();
     const isRegister = pathname.includes("register");
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [loginReturn, loginAction, isPendingLogin] = useActionState(handleLogin, null)
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [signupReturn, signupAction, isPendingSignup] = useActionState(handleSignup, null)
+    const [loginReturn, loginAction, isPendingLogin] = useActionState(handleLogin, null);
+    const [signupReturn, signupAction, isPendingSignup] = useActionState(handleSignup, null);
+
     return (
         <Form className="w-full md:w-full flex flex-col gap-5 mt-10" action={!isRegister ? loginAction : signupAction} >
 
