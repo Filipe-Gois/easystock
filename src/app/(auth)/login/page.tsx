@@ -8,7 +8,7 @@ import { AuthContainer, AuthDescription, AuthSubTitle, NavigateAuthButton } from
 const LoginPage = () => {
     return (
 
-        <AuthContainer >
+        <AuthContainer>
             <div className="h-screen w-full md:w-3/5 px-16 py-10">
 
                 <div className="flex flex-col md:flex-row gap-10 md:gap-0 items-center justify-between w-full h-max">
@@ -43,7 +43,7 @@ const LoginPage = () => {
 
             </div>
 
-            <div className="hidden md:flex w-2/5 h-full">
+            <div className="hidden md:flex w-2/5 h-full animate-slide-in-right">
                 <Image className="w-full h-screen" width={1000} height={1000} alt="Imagem." src={"/images/loginImage.png"} />
             </div>
 

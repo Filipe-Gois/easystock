@@ -8,7 +8,7 @@ export const AuthContainer = ({ children }: Props) => {
     const pathname = usePathname();
     const isRegister = pathname.includes("register");
     return (
-        <section className={`w-full h-full flex ${isRegister ? "flex-row-reverse" : ""}`}>
+        <section className={`overflow-hidden w-full h-full flex ${isRegister ? "flex-row-reverse" : ""}`}>
             {children}
         </section>
     );

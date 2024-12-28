@@ -70,3 +70,65 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* Animação para o componente main */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeOutDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+}
+.initial {
+  opacity: 0;
+  transform: translateY(100px);
+}
+.animate {
+  animation: fadeInUp 0.5s forwards;
+}
+.exit {
+  animation: fadeOutDown 0.5s forwards;
+}
+
+/* animação para as imagens da tela de login e register */
+/* Define a animação de entrada */
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in-right {
+  animation: slideInFromRight 1s ease-out forwards;
+}
+.animate-slide-in-left {
+  animation: slideInFromLeft 1s ease-out forwards;
+}

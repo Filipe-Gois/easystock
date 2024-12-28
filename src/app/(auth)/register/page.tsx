@@ -41,7 +41,7 @@ const RegisterPage = () => {
 
             </div>
 
-            <div className="hidden md:flex w-2/5 h-full">
+            <div className="hidden md:flex w-2/5 h-full animate-slide-in-left">
                 <Image className="w-full h-screen" width={1000} height={1000} alt="Imagem." src={"/images/registerImage.png"} />
             </div>
 
