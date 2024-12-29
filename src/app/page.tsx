@@ -1,9 +1,7 @@
-export default function Home() {
+import { AuthContainer } from "./AuthComponents";
+
+export default function AuthPage() {
   return (
-    <section>
-
-
-
-    </section>
+    <AuthContainer />
   );
 }

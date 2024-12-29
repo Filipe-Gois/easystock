@@ -3,20 +3,16 @@ import Form from "next/form"
 import { handleLogin, handleSignup } from "./actions";
 import Input from "@/components/inputs";
 import Button from "@/components/buttons/Button";
-import { usePathname } from "next/navigation";
 import { useActionState } from "react"
 
-const AuthForm = () => {
-    const pathname = usePathname();
-    const isRegister = pathname.includes("register");
-
+const AuthForm = ({ isRegister }: { isRegister: boolean }) => {
     const [loginReturn, loginAction, isPendingLogin] = useActionState(handleLogin, null);
     const [signupReturn, signupAction, isPendingSignup] = useActionState(handleSignup, null);
 
     return (
         <Form className="w-full md:w-full flex flex-col gap-5 mt-10" action={!isRegister ? loginAction : signupAction} >
 
-            {isRegister && <Input type="text" name="name" placeholder="Informe seu nome" />}
+            {isRegister && <Input type="text" name="nome" placeholder="Informe seu nome" />}
             <Input name="email" type="email" placeholder="E-mail" />
             <Input name="password" isPassword type="password" placeholder="Senha" />
             {isRegister &&

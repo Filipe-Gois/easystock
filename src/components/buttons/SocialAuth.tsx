@@ -1,38 +1,79 @@
 "use client"
 import { createClient } from "@/utils/supabase/client";
 import { FaGithub } from "react-icons/fa";
+import { Provider } from "@supabase/supabase-js";
+import { useRouter } from "next/navigation";
 
 type SocialAuthProps = {
-    auth?: "google" | "github"
+    auth?: Provider
 }
-
 
 const SocialAuth = ({ auth = "google" }: SocialAuthProps) => {
 
     const supabase = createClient();
+    const { replace } = useRouter()
 
-    const socialSigin = () => {
-        supabase.auth.signInWithOAuth({
+    // const verificarUsuarioExistente = async (email: string) => {
+    //     const { data, error } = await supabase
+    //         .from('usuario')
+    //         .select('id')
+    //         .eq('email', email)
+    //         .single();
+
+    //     if (error) {
+    //         return false
+    //     }
+
+    //     return data ? true : false;
+    // };
+
+
+    const socialSigin = async () => {
+        const { error } = await supabase.auth.signInWithOAuth({
             provider: auth,
         });
-    }
+
+        if (error) {
+            return {
+                sucess: false,
+                message: `Erro ao fazer login com ${auth}.`
+            }
+        };
+        replace("/home");
+
+        // const user = await supabase.auth.getUser();
+
+        // if (!user.data) {
+        //     return {
+        //         sucess: false,
+        //         message: `Erro ao fazer login com ${auth}.`
+        //     }
+        // }
+
+
+        // const email = user.data.user?.email ?? "";
+        // const nome = email.split("@")[0];
+
+        // const existeUsuario = verificarUsuarioExistente(email);
+
+
+
+    };
 
     return (
         <button onClick={socialSigin} className="min-w-48 transition-all duration-300 ease-in-out hover:scale-110 flex justify-center items-center gap-4 bg-white border-2 rounded py-2 px-6">
             {auth !== "google" ? <>
-                <FaGithub size={22} className="text-black" />Github</> : <>
-                <GoogleIconComponent />
-                Google
-            </>
+                <FaGithub size={22} className="text-black" />Github</> :
+                <>
+                    <GoogleIconComponent />
+                    Google
+                </>
             }
         </button>
     );
 };
 
 export default SocialAuth;
-
-
-
 
 const GoogleIconComponent = () => {
     return (

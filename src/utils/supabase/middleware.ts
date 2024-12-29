@@ -40,14 +40,19 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  if (
-    !user &&
-    !request.nextUrl.pathname.startsWith("/login") &&
-    !request.nextUrl.pathname.startsWith("/auth")
-  ) {
-    // no user, potentially respond by redirecting the user to the login page
+  const pathname = request.nextUrl.pathname;
+
+  // Se o usuário estiver autenticado e tentando acessar a raiz (/), redireciona para /home
+  if (user && pathname === "/") {
     const url = request.nextUrl.clone();
-    url.pathname = "/login";
+    url.pathname = "/home";
+    return NextResponse.redirect(url);
+  }
+
+  // Se o usuário não estiver autenticado e tentando acessar /home, redireciona para a raiz (/)
+  if (!user && pathname === "/home") {
+    const url = request.nextUrl.clone();
+    url.pathname = "/";
     return NextResponse.redirect(url);
   }
 

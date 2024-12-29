@@ -2,7 +2,6 @@
 import { usePathname } from "next/navigation";
 
 const MainContainer = ({ children }: { children: React.ReactNode }) => {
-
     const pathname = usePathname()
 
     return (
