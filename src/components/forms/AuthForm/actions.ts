@@ -9,8 +9,7 @@ import {
 
 export async function handleLogin(_prev: unknown, formData: FormData) {
   const supabase = await createClient();
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
+
   const data = {
     email: formData.get("email") as string,
     password: formData.get("password") as string,
@@ -20,31 +19,38 @@ export async function handleLogin(_prev: unknown, formData: FormData) {
 
   if (error) {
     return {
-      sucess: false,
+      success: false,
       message: "Erro ao fazer login.",
     };
   }
 
-  revalidatePath("/home", "layout");
-  redirect("/home");
+  // Revalida a página /produtos para garantir que os dados estejam atualizados
+  revalidatePath("/produtos", "layout");
+
+  // Agora, redireciona para /produtos após o login
+  redirect("/produtos");
 }
 
 export async function handleSignup(_prev: unknown, formData: FormData) {
   const supabase = await createClient();
 
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
   const data: SignUpWithPasswordCredentials = {
     email: formData.get("email") as string,
     password: formData.get("password") as string,
+    options: {
+      data: {
+        nome: formData.get("nome") as string,
+      },
+    },
   };
 
   const { error, data: dados } = await supabase.auth.signUp(data);
 
   if (error) {
+    console.log(error.stack);
     return {
-      sucess: false,
-      message: `Erro ao criar conta. ${error.message} ${error.status}`,
+      success: false,
+      message: `Erro ao criar conta. ${error.message} ${error.name} ${error.status}`,
     };
   }
 
@@ -54,8 +60,11 @@ export async function handleSignup(_prev: unknown, formData: FormData) {
     formData.get("nome") as string
   );
 
-  revalidatePath("/home", "layout");
-  redirect("/home");
+  // Revalida a página /produtos após o cadastro
+  revalidatePath("/produtos", "layout");
+
+  // Redireciona para /produtos após o registro
+  redirect("/produtos");
 }
 
 export const criarUsuario = async (
@@ -71,14 +80,13 @@ export const criarUsuario = async (
 
   if (usuarioBuscado) {
     return {
-      sucess: false,
+      success: false,
       message: "Esse usuário já existe.",
     };
   }
 
   await supabase.from("usuario").insert([
     {
-      email,
       nome,
     },
   ]);

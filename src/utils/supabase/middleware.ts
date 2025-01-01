@@ -42,15 +42,17 @@ export async function updateSession(request: NextRequest) {
 
   const pathname = request.nextUrl.pathname;
 
-  // Se o usuário estiver autenticado e tentando acessar a raiz (/), redireciona para /home
+  const rotas: string[] = ["/produtos", "/categorias", "/usuarios"];
+
+  // Se o usuário estiver autenticado e tentando acessar a raiz (/), redireciona para /produtos
   if (user && pathname === "/") {
     const url = request.nextUrl.clone();
-    url.pathname = "/home";
+    url.pathname = "/produtos";
     return NextResponse.redirect(url);
   }
 
-  // Se o usuário não estiver autenticado e tentando acessar /home, redireciona para a raiz (/)
-  if (!user && pathname === "/home") {
+  // Se o usuário não estiver autenticado e tentando acessar alguma rota privada, redireciona para a raiz (/)
+  if (!user && rotas.includes(pathname)) {
     const url = request.nextUrl.clone();
     url.pathname = "/";
     return NextResponse.redirect(url);

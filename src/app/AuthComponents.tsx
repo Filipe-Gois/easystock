@@ -87,7 +87,6 @@ export const NavigateAuthButton = ({ isRegister, setIsRegister }: Omit<Props, "c
 }
 
 export const AuthSubTitle = ({ isRegister }: Omit<Props, "children" | "setIsRegister">) => {
-
     return (<h2 className="font-semibold text-center text-4xl">{!isRegister ? "Bem-vindo de volta" : "Comece com o EasyStock"}</h2>);
 }
 export const AuthDescription = ({ isRegister }: Omit<Props, "children" | "setIsRegister">) => {

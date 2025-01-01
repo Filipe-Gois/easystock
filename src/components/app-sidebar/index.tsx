@@ -1,62 +1,60 @@
 import {
     Sidebar,
     SidebarContent,
-    SidebarFooter,
     SidebarGroup,
     SidebarGroupContent,
-    SidebarGroupLabel,
-    SidebarHeader,
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
+    SidebarMenuSub,
+    SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
-import { Home, Inbox, Calendar, Search, Settings } from "lucide-react"
+import { Bell, ShoppingBag, Tags, Users } from "lucide-react"
+import Footer from "./Footer"
+import Header from "./Header"
+import { Separator } from "../ui/separator"
+import Link from "next/link"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../ui/collapsible"
 
 const items = [
     {
-        title: "Home",
-        url: "#",
-        icon: Home,
+        title: "Produtos",
+        url: "/produtos",
+        icon: ShoppingBag,
     },
     {
-        title: "Inbox",
-        url: "#",
-        icon: Inbox,
+        title: "Categorias",
+        url: "/categorias",
+        icon: Tags,
     },
     {
-        title: "Calendar",
-        url: "#",
-        icon: Calendar,
+        title: "Usuários",
+        url: "/usuarios",
+        icon: Users,
     },
     {
-        title: "Search",
-        url: "#",
-        icon: Search,
-    },
-    {
-        title: "Settings",
-        url: "#",
-        icon: Settings,
+        title: "Notificações",
+        url: "",
+        icon: Bell,
     },
 ]
-
 
 export function AppSidebar() {
     return (
 
-        <Sidebar>
-            <SidebarContent className="!bg-green-700">
+        <Sidebar className="text-white" collapsible="icon">
+            <Header />
+            <SidebarContent className="bg-green-800 h-full flex flex-col !justify-center">
                 <SidebarGroup>
-                    <SidebarGroupLabel>Application</SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu>
                             {items.map((item) => (
-                                <SidebarMenuItem key={item.title}>
+                                <SidebarMenuItem className="" key={item.title}>
                                     <SidebarMenuButton asChild>
-                                        <a href={item.url}>
-                                            <item.icon />
-                                            <span>{item.title}</span>
-                                        </a>
+                                        <Link href={item.url}>
+                                            <item.icon className="" />
+                                            <span className="!text-xl">{item.title}</span>
+                                        </Link>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
                             ))}
@@ -64,6 +62,10 @@ export function AppSidebar() {
                     </SidebarGroupContent>
                 </SidebarGroup>
             </SidebarContent>
+            <div className="px-4 bg-green-800">
+                <Separator />
+            </div>
+            <Footer nome="Filipe Góis" />
         </Sidebar>
 
     )

@@ -27,19 +27,12 @@ const SocialAuth = ({ auth = "google" }: SocialAuthProps) => {
     //     return data ? true : false;
     // };
 
-
-    const socialSigin = async () => {
-        const { error } = await supabase.auth.signInWithOAuth({
+    const socialSigin = () => {
+        supabase.auth.signInWithOAuth({
             provider: auth,
         });
 
-        if (error) {
-            return {
-                sucess: false,
-                message: `Erro ao fazer login com ${auth}.`
-            }
-        };
-        replace("/home");
+        replace("/produtos");
 
         // const user = await supabase.auth.getUser();
 
@@ -55,8 +48,6 @@ const SocialAuth = ({ auth = "google" }: SocialAuthProps) => {
         // const nome = email.split("@")[0];
 
         // const existeUsuario = verificarUsuarioExistente(email);
-
-
 
     };
 
