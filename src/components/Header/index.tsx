@@ -56,10 +56,9 @@ const Header = () => {
         return null;
     }
 
-
-
     return (
-        <header className="z-50 select-none w-full h-28 px-5 md:px-10 rounded-b-3xl bg-secondaryGreen text-white flex justify-between items-center top-0 fixed">
+        <header className="z-50 select-none w-full h-28 px-5 md:px-10 rounded-b-3xl bg-gradient-to-tl from-emerald-500 to-emerald-900 text-white flex justify-between items-center top-0 fixed">
+
             <div className="flex items-center gap-4 transition-all duration-300 ease-in-out hover:scale-110">
                 <Package />
                 <h1 className="font-medium text-2xl">EasyStock</h1>

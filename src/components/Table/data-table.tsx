@@ -31,14 +31,19 @@ export function DataTable<TData, TValue>({
     })
 
     return (
-        <div className="rounded-md border">
+        <div className="bg-backgroundColor !rounded-3xl overflow-hidden">
             <Table>
-                <TableHeader>
+                <TableHeader className="h-14">
                     {table.getHeaderGroups().map((headerGroup) => (
-                        <TableRow key={headerGroup.id}>
-                            {headerGroup.headers.map((header) => {
+                        <TableRow className="!bg-emerald-900 first:!rounded-t-3xl" key={headerGroup.id}>
+                            {headerGroup.headers.map((header, index) => {
                                 return (
-                                    <TableHead key={header.id}>
+                                    <TableHead
+                                        className={`text-center text-white font-semibold ${index === 0 ? 'first:rounded-tl-3xl' : ''
+                                            } ${index === headerGroup.headers.length - 1 ? 'rounded-tr-3xl' : ''
+                                            }`}
+                                        key={header.id}
+                                    >
                                         {header.isPlaceholder
                                             ? null
                                             : flexRender(
@@ -53,13 +58,27 @@ export function DataTable<TData, TValue>({
                 </TableHeader>
                 <TableBody>
                     {table.getRowModel().rows?.length ? (
-                        table.getRowModel().rows.map((row) => (
+                        table.getRowModel().rows.map((row, rowIndex) => (
                             <TableRow
+                                className={`h-20 group relative transition-all duration-700 ease-in-out hover:text-white
+                        bg-gradient-to-l from-emerald-500 to-emerald-900 bg-[length:0%_100%] 
+                        bg-no-repeat hover:bg-[length:100%_100%] ${rowIndex === table.getRowModel().rows.length - 1 ? '!rounded-b-3xl' : ''
+                                    }`}
                                 key={row.id}
                                 data-state={row.getIsSelected() && "selected"}
                             >
-                                {row.getVisibleCells().map((cell) => (
-                                    <TableCell key={cell.id}>
+                                {row.getVisibleCells().map((cell, index) => (
+                                    <TableCell
+                                        className={`${rowIndex === table.getRowModel().rows.length - 1 && index === 0
+                                            ? 'rounded-bl-3xl'
+                                            : ''
+                                            } ${rowIndex === table.getRowModel().rows.length - 1 &&
+                                                index === row.getVisibleCells().length - 1
+                                                ? 'rounded-br-3xl'
+                                                : ''
+                                            } text-center`}
+                                        key={cell.id}
+                                    >
                                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                     </TableCell>
                                 ))}
@@ -67,7 +86,7 @@ export function DataTable<TData, TValue>({
                         ))
                     ) : (
                         <TableRow>
-                            <TableCell colSpan={columns.length} className="h-24 text-center">
+                            <TableCell colSpan={columns.length} className="h-24 text-center rounded-b-3xl">
                                 No results.
                             </TableCell>
                         </TableRow>

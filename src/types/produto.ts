@@ -12,8 +12,8 @@ export type Produto = {
 };
 
 export type ProdutoComCategoria = {
-  idProduto: string;
-  idUsuario: string;
+  idproduto: string;
+  idusuario: string;
   categoria: Categoria;
   nome: string;
   descricao: string;

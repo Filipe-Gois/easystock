@@ -1,4 +1,4 @@
 export type Categoria = {
-  id: string;
+  idcategoria: string;
   nome: string;
 };

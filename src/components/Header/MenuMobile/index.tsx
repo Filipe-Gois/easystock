@@ -27,7 +27,7 @@ const MenuMobile = ({ isOpen, setIsOpen }: MenuMobileProps) => {
 
     return (
         <Drawer open={isOpen} onOpenChange={setIsOpen}>
-            <DrawerContent className="bg-secondaryGreen text-white md:hidden">
+            <DrawerContent className="bg-gradient-to-tl from-emerald-500 to-emerald-900 text-white md:hidden">
                 <DrawerHeader className="flex w-full justify-between">
                     <DrawerTitle>Menu</DrawerTitle>
                     <DrawerDescription className="hidden" />
@@ -45,7 +45,7 @@ const MenuMobile = ({ isOpen, setIsOpen }: MenuMobileProps) => {
                         key={i}
                         className="!bg-white !w-1/2 rounded py-2"
                         text={
-                            <span className="flex gap-2 text-secondaryGreen items-center justify-center font-medium"> <e.icon size={iconSize} /> {e.text}</span>
+                            <span className="flex gap-2 text-emerald-500 items-center justify-center font-medium"> <e.icon size={iconSize} /> {e.text}</span>
                         }
                     />))}
 

@@ -24,7 +24,7 @@ export const AuthContainer = () => {
             >
                 <div className="flex flex-col md:flex-row gap-10 md:gap-0 items-center justify-between w-full h-max">
                     <div className="flex items-center gap-4">
-                        <Package className="text-green-500" />
+                        <Package className="text-emerald-500" />
                         <h1 className="font-medium text-2xl">EasyStock</h1>
                     </div>
 
@@ -82,10 +82,9 @@ export const NavigateAuthButton = ({ isRegister, setIsRegister }: Omit<Props, "c
     const navigate = () => setIsRegister(prev => !prev);
 
     return (
-        <span className="text-center text-sm">{!isRegister ? "Não tem uma conta ?" : "Tem uma conta ?"} <button onClick={navigate} className="underline text-green-500 transition-all ease-in-out duration-300 hover:scale-105">{!isRegister ? "Criar conta!" : "Fazer login!"}</button></span>
+        <span className="text-center text-sm">{!isRegister ? "Não tem uma conta ?" : "Tem uma conta ?"} <button onClick={navigate} className="underline text-emerald-500 transition-all ease-in-out duration-300 hover:scale-105">{!isRegister ? "Criar conta!" : "Fazer login!"}</button></span>
     )
 }
-
 export const AuthSubTitle = ({ isRegister }: Omit<Props, "children" | "setIsRegister">) => {
     return (<h2 className="font-semibold text-center text-4xl">{!isRegister ? "Bem-vindo de volta" : "Comece com o EasyStock"}</h2>);
 }

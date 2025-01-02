@@ -2,6 +2,7 @@
 import { ProdutoComCategoria } from "@/types/produto"
 import { ColumnDef } from "@tanstack/react-table"
 import moment from "moment"
+import { Eye } from "lucide-react"
 
 export const produtctColumns: ColumnDef<ProdutoComCategoria>[] = [
     {
@@ -25,6 +26,11 @@ export const produtctColumns: ColumnDef<ProdutoComCategoria>[] = [
     {
         accessorKey: "categoria.nome",
         header: "Categoria",
+    },
+    {
+        accessorKey: "ver_mais",
+        header: "Ver mais",
+        cell: () => <button onClick={() => { }}><Eye className="transition-all duration-300 ease-in-out group-hover:text-white hover:scale-110" /></button>,
     },
 
 ]
