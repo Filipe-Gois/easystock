@@ -27,8 +27,8 @@ const SocialAuth = ({ auth = "google" }: SocialAuthProps) => {
     //     return data ? true : false;
     // };
 
-    const socialSigin = () => {
-        supabase.auth.signInWithOAuth({
+    const socialSigin = async () => {
+        await supabase.auth.signInWithOAuth({
             provider: auth,
         });
 

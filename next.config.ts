@@ -5,7 +5,17 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "img.freepik.com", // Para imagens do Azure Blob Storage
+        hostname: "avatars.githubusercontent.com", // Para imagens do Azure Blob Storage
+        pathname: "/**", // Permite qualquer caminho após o domínio
+      },
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com", // Para imagens do Azure Blob Storage
+        pathname: "/**", // Permite qualquer caminho após o domínio
+      },
+      {
+        protocol: "https",
+        hostname: "rhyccxrzhykrkagjdpcy.supabase.co", // Para imagens do Azure Blob Storage
         pathname: "/**", // Permite qualquer caminho após o domínio
       },
     ],

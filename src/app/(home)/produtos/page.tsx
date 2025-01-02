@@ -5,7 +5,7 @@ import { getProducts } from "./actions";
 const ProdutosPage = async () => {
     const { data: produtos } = await getProducts();
 
-    console.log("first", produtos)
+    console.log(produtos)
 
     return (
         <section className="w-full h-[20000px]">

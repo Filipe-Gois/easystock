@@ -19,6 +19,6 @@ export const getProducts = async () => {
   const supabase = await createClient();
 
   return (await supabase
-    .from("produto")
-    .select(selectProducts)) as PostgrestSingleResponse<ProdutoComCategoria[]>;
+    .from("produtos")
+    .select("*")) as PostgrestSingleResponse<ProdutoComCategoria[]>;
 };

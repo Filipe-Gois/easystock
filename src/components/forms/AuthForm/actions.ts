@@ -44,21 +44,14 @@ export async function handleSignup(_prev: unknown, formData: FormData) {
     },
   };
 
-  const { error, data: dados } = await supabase.auth.signUp(data);
+  const { error } = await supabase.auth.signUp(data);
 
   if (error) {
-    console.log(error.stack);
     return {
       success: false,
       message: `Erro ao criar conta. ${error.message} ${error.name} ${error.status}`,
     };
   }
-
-  await criarUsuario(
-    supabase,
-    dados.user?.email as string,
-    formData.get("nome") as string
-  );
 
   // Revalida a página /produtos após o cadastro
   revalidatePath("/produtos", "layout");

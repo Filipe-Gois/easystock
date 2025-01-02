@@ -1,5 +1,4 @@
 "use client"
-import Image from "next/image";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -14,15 +13,15 @@ import { createClient } from "@/utils/supabase/client";
 
 
 type SelectActionsProps = {
-    imageUrl?: string
+    trigger: React.ReactNode
 }
 
-const SelectActions = ({ imageUrl }: SelectActionsProps) => {
+const SelectActions = ({ trigger }: SelectActionsProps) => {
     const supabase = createClient();
     const { push, replace } = useRouter();
 
-    const handleLogout = () => {
-        supabase.auth.signOut();
+    const handleLogout = async () => {
+        await supabase.auth.signOut();
         replace("/");
     }
 
@@ -37,9 +36,7 @@ const SelectActions = ({ imageUrl }: SelectActionsProps) => {
 
     return (
         <DropdownMenu>
-            <DropdownMenuTrigger className="hidden md:flex">
-                <Image className="w-14 rounded-lg" width={1000} height={1000} src={imageUrl ?? "/images/not-found.png"} alt="Imagem do usuário logado." />
-            </DropdownMenuTrigger>
+            <DropdownMenuTrigger className="hidden md:flex">{trigger}</DropdownMenuTrigger>
             <DropdownMenuContent className="bg-backgroundColor">
                 <DropdownMenuLabel>Minha conta</DropdownMenuLabel>
                 <DropdownMenuSeparator />

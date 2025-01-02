@@ -149,14 +149,34 @@ body {
   animation: slideInFromLeft 1s ease-out forwards;
 }
 
-/* Alterando a cor do texto e fundo ao selecionar */
 ::selection {
-  color: var(--primary); /* Cor de fundo */
-  background-color: #86efac; /* Cor do texto */
+  color: #f0f2f5;
+  background-color: #14532d;
 }
 
 /* Para navegadores compatíveis com Firefox */
 ::-moz-selection {
-  background-color: #86efac;
-  color: var(--primary);
+  color: #14532d;
+  background-color: #f0f2f5;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #14532d;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #f0f2f5;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #f0f2f5;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: #14532d;
 }

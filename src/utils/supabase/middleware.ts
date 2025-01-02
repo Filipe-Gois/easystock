@@ -42,7 +42,7 @@ export async function updateSession(request: NextRequest) {
 
   const pathname = request.nextUrl.pathname;
 
-  const rotas: string[] = ["/produtos", "/categorias", "/usuarios"];
+  const rotas: string[] = ["/produtos", "/categorias", "/usuarios", "/perfil"];
 
   // Se o usuário estiver autenticado e tentando acessar a raiz (/), redireciona para /produtos
   if (user && pathname === "/") {
