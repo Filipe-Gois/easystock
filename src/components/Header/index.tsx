@@ -47,8 +47,6 @@ const Header = () => {
         if (!usuario) {
             buscarUsuario();
         }
-        if (usuario)
-            console.log("usuario", usuario)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [usuario]);
 

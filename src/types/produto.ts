@@ -19,5 +19,5 @@ export type ProdutoComCategoria = {
   descricao: string;
   quantidade: number;
   preco: number;
-  created_at: Date;
+  created_at: string;
 };

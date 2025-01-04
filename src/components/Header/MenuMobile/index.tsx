@@ -18,7 +18,7 @@ type MenuMobileProps = {
 }
 
 const buttonArr = [
-    { text: "Conta", icon: Settings },
+    { text: "Perfil", icon: Settings },
     { text: "Sair", icon: LogOut }
 ]
 

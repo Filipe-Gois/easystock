@@ -30,7 +30,7 @@ const SelectActions = ({ trigger }: SelectActionsProps) => {
     }
 
     const itens = [
-        { text: "Conta", icon: Settings, function: goToProfilePage },
+        { text: "Perfil", icon: Settings, function: goToProfilePage },
         { text: "Sair", icon: LogOut, function: handleLogout },
     ]
 
@@ -38,7 +38,7 @@ const SelectActions = ({ trigger }: SelectActionsProps) => {
         <DropdownMenu>
             <DropdownMenuTrigger className="hidden md:flex">{trigger}</DropdownMenuTrigger>
             <DropdownMenuContent className="bg-backgroundColor">
-                <DropdownMenuLabel>Minha conta</DropdownMenuLabel>
+                <DropdownMenuLabel>Ações</DropdownMenuLabel>
                 <DropdownMenuSeparator />
 
                 {itens.map((e, i) => (

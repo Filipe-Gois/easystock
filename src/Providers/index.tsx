@@ -1,11 +1,12 @@
-
-import { PrimeReactProvider } from 'primereact/api';
+"use client"
+import QueryProvider from "./QueryProvider";
 
 const Providers = ({ children }: { children: React.ReactNode }) => {
     return (
-        <PrimeReactProvider>
+        <QueryProvider>
             {children}
-        </PrimeReactProvider>
+        </QueryProvider>
+
     );
 };
 

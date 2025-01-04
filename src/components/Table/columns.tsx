@@ -4,7 +4,7 @@ import { ColumnDef } from "@tanstack/react-table"
 import moment from "moment"
 import { Eye } from "lucide-react"
 
-export const produtctColumns: ColumnDef<ProdutoComCategoria>[] = [
+export const productColumns: ColumnDef<ProdutoComCategoria>[] = [
     {
         accessorKey: "nome",
         header: "Nome",

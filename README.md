@@ -1,36 +1,131 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# EasyStock - Gerenciador de Estoque
 
-## Getting Started
+---
 
-First, run the development server:
+## 🚀 Sobre o Projeto
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**EasyStock** é um gerenciador de estoque desenvolvido com o objetivo de explorar as funcionalidades do **Supabase**, **Server Actions**, e **Server Components** em uma aplicação **Next.js** com **TypeScript**.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+O sistema permite:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Gerenciamento de **produtos**, **categorias** e **usuários**.
+- **Autenticação** via Google, GitHub ou com email e senha.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🛠 Tecnologias Utilizadas
 
-To learn more about Next.js, take a look at the following resources:
+- **Next.js**
+- **TypeScript**
+- **Supabase**
+- **TailwindCSS** (Estilização)
+- **Docker** (Ambiente isolado e deployment)
+- **Shadcn** (Componentes de UI)
+- **React Query** (Gerenciamento de estado assíncrono)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📦 Instalação e Configuração
 
-## Deploy on Vercel
+1. **Clone o repositório:**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   git clone https://github.com/Filipe-Gois/easystock.git
+   cd easystock
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. **Configure as variáveis de ambiente:**  
+   Crie um arquivo `.env` na raiz do projeto com as seguintes informações:
+
+   ```env
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
+   ```
+
+3. **Instale as dependências:**
+
+   ```bash
+   npm install
+   ```
+
+4. **Execute a aplicação em ambiente de desenvolvimento:**
+
+   ```bash
+   npm run dev
+   ```
+
+5. **(Opcional) Rodar com Docker:**
+   - **Build da imagem:**
+     ```bash
+     docker build -t easystock .
+     ```
+   - **Executar o container:**
+     ```bash
+     docker run -p 3000:3000 easystock
+     ```
+
+---
+
+## 🎨 Funcionalidades
+
+- **Gerenciamento de Produtos:**  
+  Criação, edição e exclusão de produtos no estoque.
+- **Categorias:**  
+  Organização dos produtos em categorias.
+- **Gerenciamento de Usuários:**  
+  Controle e listagem de usuários cadastrados.
+- **Autenticação Segura:**  
+  Login via Google, GitHub ou email/senha utilizando o **Supabase Auth**.
+
+---
+
+## 🌐 Estilo e UI
+
+- Utilizando **TailwindCSS** para estilização rápida e responsiva.
+- **Shadcn** para componentes de design consistentes e reutilizáveis.
+
+---
+
+## 🔄 Requisições Assíncronas
+
+Requisições e gerenciamento de dados são implementados de forma híbrida utilizando:
+
+- **Server Components** para buscar e renderizar dados diretamente no servidor, otimizando o carregamento inicial.
+- **React Query** para gerenciamento de estado assíncrono no cliente, garantindo:
+  - Cache inteligente.
+  - Experiência otimizada com carregamentos instantâneos e atualização em tempo real.
+
+---
+
+## 📖 Roadmap
+
+- [ ] Adicionar relatórios para análise do estoque.
+- [ ] Integração com APIs externas para cálculo automático de preços.
+
+---
+
+## 🤝 Contribuições
+
+Contribuições são bem-vindas!
+
+1. Faça um fork do repositório.
+2. Crie uma branch para sua feature/bugfix:
+   ```bash
+   git checkout -b minha-feature
+   ```
+3. Envie um Pull Request.
+
+---
+
+## 📄 Licença
+
+Este projeto está licenciado sob a licença **MIT**. Veja o arquivo `LICENSE` para mais detalhes.
+
+---
+
+## 📧 Contato
+
+Para dúvidas ou sugestões:
+
+- Email: [filipeogois@gmail.com](mailto:filipeogois@gmail.com)
+- LinkedIn: [Filipe Góis](https://www.linkedin.com/in/filipe-góis)

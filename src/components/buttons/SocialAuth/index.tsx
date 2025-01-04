@@ -9,45 +9,18 @@ type SocialAuthProps = {
 }
 
 const SocialAuth = ({ auth = "google" }: SocialAuthProps) => {
-
     const supabase = createClient();
     const { replace } = useRouter()
-
-    // const verificarUsuarioExistente = async (email: string) => {
-    //     const { data, error } = await supabase
-    //         .from('usuario')
-    //         .select('id')
-    //         .eq('email', email)
-    //         .single();
-
-    //     if (error) {
-    //         return false
-    //     }
-
-    //     return data ? true : false;
-    // };
 
     const socialSigin = async () => {
         await supabase.auth.signInWithOAuth({
             provider: auth,
+            options: {
+                redirectTo: "http://localhost:3000/produtos"
+            }
         });
 
         replace("/produtos");
-
-        // const user = await supabase.auth.getUser();
-
-        // if (!user.data) {
-        //     return {
-        //         sucess: false,
-        //         message: `Erro ao fazer login com ${auth}.`
-        //     }
-        // }
-
-
-        // const email = user.data.user?.email ?? "";
-        // const nome = email.split("@")[0];
-
-        // const existeUsuario = verificarUsuarioExistente(email);
 
     };
 

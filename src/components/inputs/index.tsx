@@ -16,7 +16,7 @@ const Input = ({ isPassword = false, ...rest }: InputProps) => {
             <InputShad
                 {...rest}
                 type={isPassword ? (isPasswordVisible ? "text" : "password") : rest.type}
-                className="bg-white w-full h-[70px] pr-12 transition-all ease-in-out duration-100 focus:border-green-100" // Espaço para o ícone
+                className={`bg-white w-full h-[70px] pr-12 transition-all ease-in-out duration-100 focus:border-green-100 ${rest.className}`} // Espaço para o ícone
             />
 
             {/* Ícone dentro do input */}
