@@ -4,7 +4,7 @@
 
 ## 🚀 Sobre o Projeto
 
-**EasyStock** é um gerenciador de estoque desenvolvido com o objetivo de explorar as funcionalidades do **Supabase**, **Server Actions**, e **Server Components** em uma aplicação **Next.js** com **TypeScript**.
+**EasyStock** é um gerenciador de estoque desenvolvido com o objetivo de explorar as funcionalidades do **Supabase**, **Server Actions**, **Server Components**, e **Docker** em uma aplicação **Next.js** com **TypeScript**.
 
 O sistema permite:
 
